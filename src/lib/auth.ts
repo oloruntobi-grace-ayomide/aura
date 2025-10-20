@@ -40,14 +40,14 @@ const authConfig = {
     newUser: "/onboarding" // first sign-in only
   },
   callbacks: {
-    async session({ session }: { session: Session }) {
+    async session({ session }: { session: Session & { user: Session['user'] & { onboarded?: boolean } } }) {
       try {
         if (session.user?.email) {
           const u = await prisma.user.findUnique({
             where: { email: session.user.email },
             select: { onboarded: true }
           })
-          ;(session.user as any).onboarded = !!u?.onboarded
+          session.user.onboarded = !!u?.onboarded
         }
         return session
       } catch(error) {

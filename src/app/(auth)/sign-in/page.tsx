@@ -1,11 +1,10 @@
 "use client"
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { z } from "zod"
 import { signIn } from "next-auth/react";
 import { useAlert } from "@/hooks/alert-provider"
-import { EmailInput, PasswordInput, DividerOr, SocialButtons } from "../layout";
+import { EmailInput, PasswordInput, DividerOr, SocialButtons } from "@/components/AuthComponents";
 import { Button } from "@/components/ui/button";
 
 type SignInData = {
@@ -24,7 +23,6 @@ const signInSchema = z.object({
 })
 
 export default function SignInPage() {
-  const router = useRouter()
   const { showAlert } = useAlert();
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
 
@@ -128,7 +126,7 @@ export default function SignInPage() {
     setIsSubmitting(prev => ({ ...prev, isGoogleSubmitting: true }))
     try {
       await signIn("google", { redirectTo: "/dashboard" })
-    } catch (error) {
+    } catch{
       showAlert("error", {
         alertHeader: "Google Sign In Failed",
         alertDescription: "Please try again or use another method",
@@ -180,7 +178,7 @@ export default function SignInPage() {
           {isSubmitting.isNormalSubmitting ? <span className="loader"></span> : "Login"}
         </Button>
         <p className="mt-1 text-xs text-slate-500">
-          Don't Have an account? <Link href="/sign-up" className="underline">Sign-up</Link>.
+          Don&apos;t Have an account? <Link href="/sign-up" className="underline">Sign-up</Link>.
         </p>
       </form>
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { z } from "zod"
 import { signIn } from "next-auth/react";
 import { useAlert } from "@/hooks/alert-provider"
-import { TextInput, EmailInput, PasswordInput, DividerOr, SocialButtons } from "../layout";
+import { TextInput, EmailInput, PasswordInput, DividerOr, SocialButtons } from "@/components/AuthComponents";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
