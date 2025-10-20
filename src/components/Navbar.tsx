@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full pt-5">
-      <nav className="md:w-[70%] w-[92%] mx-auto md:h-[60px] md:rounded-[30px] h-[45px] bg-white rounded-2xl px-5 flex items-center relative">
+      <nav className="md:w-[70%] w-[92%] mx-auto md:h-[60px] md:rounded-[30px] h-[45px] bg-white rounded-2xl px-5 flex items-center justify-between relative">
         {/* Brand */}
         <Link
           href="/"
@@ -47,7 +47,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <ul className="ml-auto hidden md:flex items-center gap-2 sm:gap-6">
+        <ul className="hidden md:flex items-center gap-2 sm:gap-6">
           {LINKS.map((item) => (
             <li key={item.path}>
               <Link
@@ -61,6 +61,14 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Destop Authention links */}
+        <div  className="md:flex items-center gap-6">
+          <Link href="/sign-in">Login</Link>
+          <Link href="/sign-up">Sign Up</Link>
+        </div>
+
+
 
         {/* Mobile toggle */}
         <button
